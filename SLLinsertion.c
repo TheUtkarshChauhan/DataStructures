@@ -1,3 +1,5 @@
+// this file is created for the complete menu driven programe for Singly linked list with all the operations with menu like insertiona and deletion\
+// all these operations consists of containes three sub operations like insertion but in front end and middle of an linked list and similarly in the case for deletion
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>

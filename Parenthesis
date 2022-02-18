@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#define MAX 20
+char stack[MAX];
+int top = -1;
+void push(char item)
+{
+    
+    if (top<20)
+    {
+        // printf("\nEnter the Character:");
+        // scanf("%c",&item);
+        top=top+1;
+        stack[top]=item;
+        printf("\nEntered element %c",item);
+    }
+    else
+    {
+        printf("\nStack Overflow");
+    }
+    
+    
+}
+void pop()
+{
+    char item;
+    int num1=1;
+    if (top>=0)
+    {
+        item =stack[top];
+        top = top-1;
+        printf("\nDeleted Character is= %c\n", item);
+    }
+    else
+    {
+        printf("\nStack is empty\n");
+        num1=0;
+        printf("Parenthesis Error\n");
+
+    }
+    
+}
+void display()
+{
+    if (top==-1)
+    {
+        printf("\nStack is empty\n");
+
+    }
+    else
+    {
+        for (int i = top; i >= 0; i--)
+    {
+        printf("\t%c ", stack[i]);
+    }
+    }
+    
+    
+    
+}
+void checker()
+{
+    if (top<0)
+    {
+        printf("\nExpression have correct Parenthesis\n");
+    }
+    else
+    {
+        printf("\nExpression have incorrect Parenthesis\n");
+        printf("\nMissing pairs are\n");
+        display();
+        
+    }
+    
+}
+
+int main()
+{
+    char str[100];
+    printf("Enter the Expression:");
+    gets(str);
+    int count = 0;
+    int count1=1;
+    int num;
+    num= strlen(str);
+    printf("\nChecking the Expression");
+    for (int i = 0; i < strlen(str); i++)
+    {
+        if (str[i] == '('||str[i] =='{'||str[i] == '[')
+        {
+            push(str[i]);
+            count++;
+        }
+        
+    }
+    // printf("%d",count);
+    // int count1=1;
+    for (int i = 0; i < strlen(str); i++)
+    {
+        
+        
+        if (str[i] == ')'||str[i]=='}'||str[i] == ']')
+        {
+            pop();
+            count1++;
+            if (count1>count)
+            {
+                push(str[i]);
+                break;
+            }
+            
+        }
+        
+        
+        
+    }
+    // display();
+    checker();
+    
+    return 0;
+}

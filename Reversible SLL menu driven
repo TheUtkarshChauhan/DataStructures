@@ -1,0 +1,445 @@
+// #include<stdio.h>
+// #include<string.h>
+// #include<stdlib.h>
+// int counter=0;
+// struct Node{
+//     int data;
+//     struct Node* next;
+// };
+
+// struct stacknode
+// {
+//     int data;
+//     struct stacknode *next;
+// };
+
+// struct stacknode *top = NULL;
+// void push(int item)
+// {
+//     struct stacknode *nptr = malloc(sizeof(struct stacknode));
+//     nptr->data = item;
+//     nptr->next = top;
+//     top = nptr;
+// }
+
+
+// int pop()
+// {
+//     struct stacknode *temp;
+//     if (top == NULL)
+//     {
+//         printf("\n\nStack is empty ");
+//     }
+//     else
+//     {
+        
+//         temp = top;
+//         top = top->next;
+//         printf("\n\n%d deleted", temp->data);
+//         free(temp);
+//     }
+//     return temp->data;
+// }
+// // display function for transversal of LL data
+// struct Node* LLdisplay(struct Node * ptr)
+// {
+    
+//     while (ptr != NULL)
+//     {
+//         printf("%d  ->", ptr->data);
+//         ptr = ptr->next;
+//     }
+    
+// }
+// // All inserion operation are listed here
+// // Case 1 Insertion at the beginning
+// struct Node * insertathead(struct Node * head, int data)
+// {
+//     struct Node* ptr;
+//     ptr = (struct Node*)malloc(sizeof(struct Node));
+//     ptr->next = head;
+//     ptr->data = data;
+//     return ptr;
+// }
+// // case 2 Insertion at end 
+// struct Node* insertatend(struct Node* head,int data)
+// {
+//     struct Node* ptr;
+//     ptr = (struct Node*)malloc(sizeof(struct Node));
+//     ptr->data = data;
+//     struct Node* p = head;
+//     while (p->next != NULL)
+//     {
+//         p = p->next;
+//     }
+//     p->next = ptr;
+//     ptr->next = NULL;
+//     return head;
+// }
+// // case 3 Insertion at the middle 
+// struct Node *insertatmid(struct Node * head, int data)
+// {
+//     struct Node*ptr;
+//     ptr = (struct Node*)malloc(sizeof(struct Node));
+//     ptr->data = data;
+//     struct Node * p = head;
+//     struct Node * q = head;
+//     struct Node* temp = head->next;
+//     int count = 0;
+//     while (p!=NULL)
+//     {
+//         p=p->next;
+//         count++;
+//     }
+//     printf("Total No of nodes: %d\n", count);
+//     for (int i = 0; i < (count/2)-1; i++)
+//     {
+//         q = q->next;
+//         temp = temp->next;
+//     }
+//     q->next = ptr;
+//     ptr->next = temp;
+//     return head;
+// }
+// // Deletion operation are listed below 
+// // Case 1 Deletion from front 
+// struct Node * deletefromfront(struct Node * head)
+// {
+//     struct Node* ptr = head;
+//     head = head->next;
+//     free(ptr);
+//     return head;
+// }
+// //case 2 Deletion from End 
+// struct Node * deletefromend(struct Node * head)
+// {
+//     struct Node* ptr = head;
+//     struct Node *q = head->next;
+//     while (q->next != NULL)
+//     {
+//         ptr=ptr->next;
+//         q = q->next;
+//     }
+//     ptr->next = q->next;
+//     free(q);
+//     return head;
+// }
+// // case 3 Deletion from middle 
+// struct Node * deletefrommiddle(struct Node * head)
+// {
+//     struct Node* ptr = head;
+//     struct Node * q= head->next;
+//     struct Node * p = head;
+//     int count = 0;
+//     while (p!=NULL)
+//     {
+//         p=p->next;
+//         count++;
+//     }
+//     for (int i = 0; i < (count/2)-1; i++)
+//     {
+//         ptr = ptr->next;
+//         q=q->next;
+//     }
+//     ptr->next = q->next;
+//     free(q);
+//     return head;
+// }
+// struct Node * llreversal(struct  Node * head)
+// {
+    
+//     struct Node * ptr= head;
+//     while (ptr!=NULL)
+//     {
+//         counter++;
+//         push(ptr->data);
+//         ptr=ptr->next;
+//     }
+//     head=NULL;
+//     head->data=pop();
+//     head->next = NULL;
+    
+//     for (int i = 0; i < counter; i++)
+//     {
+//         head = insertatend(head,pop());
+        
+//     }
+//     LLdisplay(head);
+//     return head;
+// }
+// int main()
+// {
+//     int value;
+//     int condition =0;
+//     struct Node *head;
+//     head = (struct Node *)malloc(sizeof(struct Node));  
+//     printf("***************************************");
+//     printf("\n");
+//     int choice;
+//     int subchoice;
+//     printf("***************MENU****************\n");
+//         printf("Enter (1) for initializing linked list:\n");
+//         printf("Enter (2) for insering elements in linked list:\n");
+//         printf("Enter (3) for deleting elements from linked list:\n");
+//         printf("Enter (4) for Displaying elements in linked list:\n");
+//         printf("Enter (5) for SLL reversal\n");
+//         printf("Enter (6) for Exit\n");
+//     do
+//     {
+//         printf("\nEnter MENU choice :: ");
+//         scanf("%d",&choice);
+//         switch (choice)
+//         {
+//             case 1:
+//                   printf("Enter the Data for the first Node");
+//                   scanf("%d",&(head->data));
+//                   head->next = NULL;
+//                   while (value!=-1)
+//                   {
+//                       printf("\nEnter the New Node data");
+//                       scanf("%d",&value);
+//                       head = insertatend(head,value);
+//                       printf("\nEnter -1 to exit:");
+//                       scanf("%d",&value);
+//                   }
+                  
+//                   break;
+//             case 2:
+                
+//                   printf("Enter (1) for Insertion at the front:\n");
+//                   printf("Enter (2) for Insertion at the end:\n");
+//                   printf("Enter (3) for Insertion at the middle:\n");
+//                   printf("Enter the SubChoice for insertion");
+//                   scanf("%d",&subchoice);
+//                   printf("Enter the New Node data");
+//                   scanf("%d",&value);
+//                   if (subchoice==1)
+//                   {
+//                       head = insertathead(head,value);
+//                   }
+//                   else if (subchoice == 2)
+//                   {
+//                       head = insertatend(head,value);
+//                   }
+//                   else
+//                   {
+//                       head = insertatmid(head,value);
+//                   }
+//                   break;
+//             case 3:
+//                 printf("Enter (1) for deletion at the front\n:");
+//                 printf("Enter (2) for deletion at the end\n:");
+//                 printf("Enter (3) for deletion at the middle:\n");
+//                 printf("Enter the SubChoice for insertion\n");
+//                 scanf("%d",&subchoice);
+//                 if (subchoice==1)
+//                 {
+//                     head = deletefromfront(head);
+//                     printf("Element Deleted\n");
+//                 }
+//                 else if (subchoice == 2)
+//                 {
+//                     head = deletefromend(head);
+//                     printf("Element Deleted\n");
+//                 }
+//                 else if (subchoice==3)
+//                 {
+//                     head =deletefrommiddle(head);
+//                     printf("Element Deleted\n");
+//                 }
+//                 break;
+                
+//             case 4:
+                
+//                 LLdisplay(head);
+//                 break; 
+//             case 5:
+//                 head=llreversal(head);
+                
+//                 break;
+//             case 6:
+//                 exit (0);
+//                 break;
+//             default:
+//             printf("All operations are completed");
+//             break;
+//         }
+        
+//         printf("\n");
+//         printf("Enter 1 to exit the menu:");
+//         scanf("%d",&condition);
+//     } while (condition !=1);
+    
+
+//     return 0;
+// }
+#include <stdio.h>
+#include <stdlib.h>
+
+
+/* Structure of a node */
+struct node {
+    int data; //Data part
+    struct node *next; //Address part
+}*head;
+
+
+/* Functions used in the program */
+void createList(int n);
+void reverseList();
+void displayList();
+
+
+int main()
+{
+    int n, choice;
+
+    /*
+     * Create a singly linked list of n nodes
+     */
+    printf("Enter the total number of nodes: ");
+    scanf("%d", &n);
+    createList(n);
+
+    printf("\nData in the list \n");
+    displayList();
+
+    /*
+     * Reverse the list
+     */
+    printf("\nPress 1 to reverse the order of singly linked list\n");
+    scanf("%d", &choice);
+    if(choice == 1)
+    {
+        reverseList();
+    }
+
+    printf("\nData in the list\n");
+    displayList();
+
+    return 0;
+}
+
+
+/*
+ * Create a list of n nodes
+ */
+void createList(int n)
+{
+    struct node *newNode, *temp;
+    int data, i;
+
+    if(n <= 0)
+    {
+        printf("List size must be greater than zero.\n");
+        return;
+    }
+
+    head = (struct node *)malloc(sizeof(struct node));
+
+    /*
+     * If unable to allocate memory for head node
+     */
+    if(head == NULL)
+    {
+        printf("Unable to allocate memory.");
+    }
+    else
+    {
+        /*
+         * Read data of node from the user
+         */
+        printf("Enter the data of node 1: ");
+        scanf("%d", &data);
+
+        head->data = data; // Link the data field with data
+        head->next = NULL; // Link the address field to NULL
+
+        temp = head;
+
+        /*
+         * Create n nodes and adds to linked list
+         */
+        for(i=2; i<=n; i++)
+        {
+            newNode = (struct node *)malloc(sizeof(struct node));
+
+            /* If memory is not allocated for newNode */
+            if(newNode == NULL)
+            {
+                printf("Unable to allocate memory.");
+                break;
+            }
+            else
+            {
+                printf("Enter the data of node %d: ", i);
+                scanf("%d", &data);
+
+                newNode->data = data; // Link the data field of newNode with data
+                newNode->next = NULL; // Link the address field of newNode with NULL
+
+                temp->next = newNode; // Link previous node i.e. temp to the newNode
+                temp = temp->next;
+            }
+        }
+
+        printf("SINGLY LINKED LIST CREATED SUCCESSFULLY\n");
+    }
+}
+
+
+/*
+ * Reverse the order of nodes of a singly linked list
+ */
+void reverseList()
+{
+    struct node *prevNode, *curNode;
+
+    if(head != NULL)
+    {
+        prevNode = head;
+        curNode = head->next;
+        head = head->next;
+
+        prevNode->next = NULL; // Make first node as last node
+
+        while(head != NULL)
+        {
+            head = head->next;
+            curNode->next = prevNode;
+
+            prevNode = curNode;
+            curNode = head;
+        }
+
+        head = prevNode; // Make last node as head
+
+        printf("SUCCESSFULLY REVERSED LIST\n");
+    }
+}
+
+
+/*
+ * Display entire list
+ */
+void displayList()
+{
+    struct node *temp;
+
+    /*
+     * If the list is empty i.e. head = NULL
+     */
+    if(head == NULL)
+    {
+        printf("List is empty.");
+    }
+    else
+    {
+        temp = head;
+        while(temp != NULL)
+        {
+            printf("%d ->", temp->data); // Print the data of current node
+            temp = temp->next;                 // Move to next node
+        }
+    }
+}
